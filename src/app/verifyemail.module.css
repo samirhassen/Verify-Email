@@ -1,0 +1,610 @@
+/* VerifyEmail Component Styles - CSS Module */
+
+.leftPanel {
+  background-color: #E8F0FF;
+  position: relative;
+  width: 100%;
+  min-width: 354px;
+  max-width: 354px;
+}
+
+.onlinemedBrand {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 98px;
+  height: 25px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+  color: #111827;
+  display: flex;
+  align-items: center;
+}
+
+.moneyBackGuarantee {
+  position: absolute;
+  top: 95px;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.moneyBackGuaranteeIcon {
+  width: 16.67px;
+  height: 16.67px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.moneyBackGuaranteeText {
+  width: 152px;
+  height: 20px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #2563EB;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.mainHeadline {
+  position: absolute;
+  top: 135px;
+  left: 14px;
+  min-width: 235px;
+  width: 100%;
+  max-width: 300px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: -1px;
+  color: #111827;
+  display: block;
+  white-space: normal;
+}
+
+.highlightText {
+  color: #2563EB;
+}
+
+.description {
+  position: absolute;
+  top: 256px;
+  left: 14px;
+  width: 100%;
+  max-width: 322px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #475569;
+}
+
+.testimonial {
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+  right: 16px;
+}
+
+.testimonialCard {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 322px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #FAB02029;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FAB020;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: 'Satoshi', sans-serif;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userName {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1E293B;
+}
+
+.userLocation {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #64748B;
+}
+
+.ratingAndTimestamp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.stars {
+  display: flex;
+  gap: 0;
+  width: 102px;
+  height: 18.39px;
+}
+
+.starIcon {
+  width: 20.4px;
+  height: 18.39px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.timestamp {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #64748B;
+}
+
+.testimonialText {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #1E293B;
+  margin-top: 8px;
+}
+
+.carouselDots {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding-left: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dotActive {
+  background-color: #2563EB;
+}
+
+.dotInactive {
+  background-color: #CBD5E1;
+}
+
+.rightPanel {
+  background: white;
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.formContainer {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.stepIndicator {
+  color: #2563EB;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: left;
+  width: 100%;
+  line-height: 26px;
+  letter-spacing: -1px;
+  font-family: var(--font-satoshi);
+}
+
+.stepTotal {
+  color: #6B7280;
+}
+
+.question {
+  font-family: var(--font-satoshi);
+  font-size: 32px;
+  font-weight: 700;
+  color: #0D0D12;
+  margin-bottom: 12px;
+  line-height: 48px;
+  letter-spacing: -1px;
+  width: 275px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #6B7280;
+  margin-bottom: 24px;
+  line-height: 24px;
+  font-family: var(--font-satoshi);
+}
+
+.emailInputContainer {
+  position: relative;
+  width: 660px;
+  margin-bottom: 32px;
+  transform-origin: top left;
+}
+
+.emailInput {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #2563EB;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 16px;
+  color: #111827;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+  padding-right: 56px;
+}
+
+.emailInput::placeholder {
+  color: #9CA3AF;
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.loadingSpinner {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #2563EB 0deg, transparent 90deg, #2563EB 180deg, transparent 270deg, #2563EB 360deg);
+  animation: spin 1s linear infinite;
+  mask: radial-gradient(circle at center, transparent 8px, black 8px);
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 660px;
+  margin-top: -16px;
+}
+
+.backButton {
+  color: #2563EB;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px 0;
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.backArrow {
+  width: 28px;
+  height: 48px;
+  color: #2563EB;
+  flex-shrink: 0;
+}
+
+.nextButtonEnabled {
+  background: #4B5563;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 44.5px;
+  font-family: var(--font-satoshi);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 128px;
+  height: 50px;
+  line-height: 28px;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nextButtonEnabled:hover {
+  background: #374151;
+}
+
+.nextButtonDisabled {
+  background: #9CA3AF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 44.5px;
+  font-family: var(--font-satoshi);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: not-allowed;
+  width: 128px;
+  height: 50px;
+  line-height: 28px;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .leftPanel {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .rightPanel {
+    padding: 16px 24px;
+  }
+  
+  .mainHeadline {
+    min-width: 235px;
+    width: calc(100% - 28px);
+    font-size: 28px;
+    line-height: 38px;
+  }
+  
+  .description {
+    width: calc(100% - 28px);
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .testimonialCard {
+    padding: 16px;
+  }
+  
+  .formContainer {
+    max-width: 100%;
+  }
+  
+  .question {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainHeadline {
+    font-size: 24px;
+    line-height: 32px;
+    min-width: 235px;
+  }
+  
+  .description {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
+  .rightPanel {
+    padding: 12px 16px;
+  }
+}
+
+/* Verification Section Styles */
+.verificationSection {
+  width: 660px;
+  margin-bottom: 32px;
+  text-align: left;
+  border: 1px solid #DFE1E6;
+  border-radius: 8px;
+  background: #FFFFFF;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.verificationHeader {
+  background: #E8F0FF;
+  margin: 0 0 20px 0;
+  padding: 12px 20px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emailInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.emailLabel {
+  color: #2563EB;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.emailAddress {
+  color: #353849;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.changeButton {
+  color: #353849;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 25%;
+  text-decoration-thickness: 10.5%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-satoshi);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0px;
+  width: 50px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.verificationContent {
+  padding: 20px 20px;
+  background: #FFFFFF;
+}
+
+.verificationTitle {
+  font-family: var(--font-satoshi);
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+  line-height: 32px;
+  text-align: left;
+}
+
+.verificationSubtitle {
+  font-family: var(--font-satoshi);
+  font-size: 16px;
+  color: #353849;
+  line-height: 24px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.emailHighlight {
+  font-weight: 500;
+  color: #111827;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.codeInputs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.codeInput {
+  width: 56px;
+  height: 56px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  background: #FFFFFF;
+  transition: border-color 0.2s ease;
+}
+
+.codeInput:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.resendOption {
+  font-size: 14px;
+  color: #6B7280;
+  text-align: left;
+}
+
+.resendButton {
+  color: #2563EB;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Email Input Fade Out */
+.emailInputContainer.fadeOut {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Morph Container for Smooth Transitions */
+.morphContainer {
+  width: 100%;
+  position: relative;
+}
+
+/* Framer Motion Integration */
+.morphContainer > div {
+  width: 100%;
+}
