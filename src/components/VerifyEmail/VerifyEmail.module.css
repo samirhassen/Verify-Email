@@ -1,0 +1,710 @@
+/* ==========================================================================
+   VerifyEmail Component - Modern CSS Module
+   ========================================================================== */
+
+/* ==========================================================================
+   Layout Components
+   ========================================================================== */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: var(--sidebar-width) 1fr;
+  }
+}
+
+/* ==========================================================================
+   Left Panel (Sidebar)
+   ========================================================================== */
+
+.leftPanel {
+  background-color: var(--color-primary-100);
+  position: relative;
+  width: 100%;
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+}
+
+.brand {
+  position: absolute;
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+  width: 98px;
+  height: 25px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: 32px;
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-neutral-900);
+  display: flex;
+  align-items: center;
+}
+
+.moneyBackGuarantee {
+  position: absolute;
+  top: 95px;
+  left: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.moneyBackGuaranteeIcon {
+  width: 16.67px;
+  height: 16.67px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.moneyBackGuaranteeText {
+  width: 152px;
+  height: 20px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+  color: var(--color-primary-600);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.mainHeadline {
+  position: absolute;
+  top: 135px;
+  left: var(--spacing-4);
+  min-width: 235px;
+  width: 100%;
+  max-width: 300px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-5xl);
+  line-height: 44px;
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-neutral-900);
+  display: block;
+  white-space: normal;
+}
+
+.highlightText {
+  color: var(--color-primary-600);
+}
+
+.description {
+  position: absolute;
+  top: 256px;
+  left: var(--spacing-4);
+  width: 100%;
+  max-width: 322px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-600);
+}
+
+/* ==========================================================================
+   Testimonial Section
+   ========================================================================== */
+
+.testimonial {
+  position: absolute;
+  bottom: var(--spacing-8);
+  left: var(--spacing-4);
+  right: var(--spacing-4);
+}
+
+.testimonialCard {
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-5);
+  box-shadow: var(--shadow-card);
+  width: 322px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-success-100);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-success-500);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-primary);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userName {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-800);
+}
+
+.userLocation {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+  color: var(--color-neutral-500);
+}
+
+.ratingAndTimestamp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--spacing-2) 0;
+}
+
+.stars {
+  display: flex;
+  gap: 0;
+  width: 102px;
+  height: 18.39px;
+}
+
+.starIcon {
+  width: 20.4px;
+  height: 18.39px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.timestamp {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+  color: var(--color-neutral-500);
+}
+
+.testimonialText {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-800);
+  margin-top: var(--spacing-2);
+}
+
+.carouselDots {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+  padding-left: 0;
+}
+
+.dot {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+  border-radius: var(--radius-full);
+}
+
+.dotActive {
+  background-color: var(--color-primary-600);
+}
+
+.dotInactive {
+  background-color: var(--color-neutral-300);
+}
+
+/* ==========================================================================
+   Right Panel (Form)
+   ========================================================================== */
+
+.rightPanel {
+  background: var(--color-white);
+  padding: var(--spacing-8) var(--spacing-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.formContainer {
+  max-width: var(--form-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background: var(--color-white);
+  box-shadow: none;
+  border: none;
+}
+
+/* ==========================================================================
+   Form Header
+   ========================================================================== */
+
+.stepIndicator {
+  color: var(--color-primary-600);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-3);
+  text-align: left;
+  width: 100%;
+  line-height: 26px;
+  letter-spacing: var(--letter-spacing-tighter);
+  font-family: var(--font-family-primary);
+}
+
+.stepTotal {
+  color: var(--color-neutral-500);
+}
+
+.question {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  color: #0d0d12;
+  margin-bottom: var(--spacing-3);
+  line-height: 48px;
+  letter-spacing: var(--letter-spacing-tighter);
+  width: 275px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-500);
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-normal);
+  font-family: var(--font-family-primary);
+}
+
+/* ==========================================================================
+   Email Input Section
+   ========================================================================== */
+
+.emailInputContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--spacing-5);
+}
+
+.emailInput {
+  width: 100%;
+  height: var(--input-height);
+  border: 1px solid var(--color-primary-600);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--spacing-4);
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-900);
+  background: var(--color-white);
+  box-shadow: var(--shadow-focus);
+  padding-right: 56px;
+  transition: border-color var(--duration-200) var(--ease-in-out);
+}
+
+.emailInput::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: var(--color-primary-600);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ==========================================================================
+   Loading Spinner
+   ========================================================================== */
+
+.loadingSpinner {
+  position: absolute;
+  right: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    from 0deg,
+    var(--color-primary-600) 0deg,
+    transparent 90deg,
+    var(--color-primary-600) 180deg,
+    transparent 270deg,
+    var(--color-primary-600) 360deg
+  );
+  animation: spin 1s linear infinite;
+  mask: radial-gradient(circle at center, transparent 8px, black 8px);
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Navigation Buttons
+   ========================================================================== */
+
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+.backButton {
+  color: var(--color-primary-600);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: var(--spacing-2) 0;
+  transition: text-decoration var(--duration-200) var(--ease-in-out);
+}
+
+.backButton:hover {
+  text-decoration: underline;
+}
+
+.backArrow {
+  width: 28px;
+  height: 48px;
+  color: var(--color-primary-600);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Next Button States
+   ========================================================================== */
+
+.nextButtonEnabled {
+  background: var(--color-gray-600);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 11px 44.5px;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  width: 128px;
+  height: var(--button-height);
+  line-height: 28px;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--duration-200) var(--ease-in-out);
+}
+
+.nextButtonEnabled:hover {
+  background: var(--color-gray-700);
+}
+
+.nextButtonDisabled {
+  background: var(--color-gray-400);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 11px 44.5px;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  cursor: not-allowed;
+  width: 128px;
+  height: var(--button-height);
+  line-height: 28px;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   OTP Verification Section
+   ========================================================================== */
+
+.verificationSection {
+  width: 100%;
+  margin-bottom: var(--spacing-5);
+  text-align: left;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.verificationHeader {
+  background: var(--color-primary-100);
+  margin: 0;
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emailInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.emailLabel {
+  color: var(--color-primary-600);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: 0px;
+}
+
+.emailAddress {
+  color: var(--color-neutral-700);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.changeButton {
+  color: var(--color-neutral-700);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 25%;
+  text-decoration-thickness: 10.5%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 20px;
+  letter-spacing: 0px;
+  width: 50px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.verificationContent {
+  padding: var(--spacing-5) var(--spacing-5);
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-200);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.verificationTitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+  margin-bottom: var(--spacing-2);
+  line-height: 32px;
+  text-align: left;
+}
+
+.verificationSubtitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-700);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+  text-align: left;
+}
+
+.emailHighlight {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+/* ==========================================================================
+   OTP Input Fields
+   ========================================================================== */
+
+.codeInputs {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.codeInput {
+  width: var(--otp-input-size);
+  height: var(--otp-input-size);
+  border: 2px solid var(--color-neutral-300);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+  background: var(--color-white);
+  transition: border-color var(--duration-200) var(--ease-in-out);
+}
+
+.codeInput:focus {
+  outline: none;
+  border-color: var(--color-primary-600);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ==========================================================================
+   Resend Option
+   ========================================================================== */
+
+.resendOption {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  text-align: left;
+}
+
+.resendButton {
+  color: var(--color-primary-600);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   Morph Container & Animations
+   ========================================================================== */
+
+.morphContainer {
+  width: 100%;
+  position: relative;
+  box-shadow: none;
+  background: transparent;
+}
+
+.morphContainer > div {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Animation Keyframes
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* ==========================================================================
+   Animation Classes
+   ========================================================================== */
+
+.emailInputContainer.fadeOut {
+  animation: fadeOut var(--duration-500) var(--ease-in-out) forwards;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .leftPanel {
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .rightPanel {
+    padding: var(--spacing-4) var(--spacing-6);
+  }
+
+  .mainHeadline {
+    min-width: 235px;
+    width: calc(100% - 28px);
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .description {
+    width: calc(100% - 28px);
+    font-size: var(--font-size-sm);
+    line-height: 20px;
+  }
+
+  .testimonialCard {
+    padding: var(--spacing-4);
+  }
+
+  .formContainer {
+    max-width: 100%;
+  }
+
+  .question {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainHeadline {
+    font-size: 24px;
+    line-height: 32px;
+    min-width: 235px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .rightPanel {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+}

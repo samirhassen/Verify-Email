@@ -1,27 +1,29 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import {
+  motion,
   AnimatePresence,
   LayoutGroup,
-  motion,
   useReducedMotion,
 } from "framer-motion";
-import styles from "./verifyemail.module.css";
+import styles from "./VerifyEmail.module.css";
+import { View } from "./types";
+import { isValidEmail, generateOTPArray } from "./utils";
 
 export default function VerifyEmail() {
   const [email, setEmail] = useState("");
-  const [view, setView] = useState<"idle" | "typing" | "verifying" | "otp">("idle");
-  const [code, setCode] = useState(["", "", "", ""]);
+  const [view, setView] = useState<View>("idle");
+  const [code, setCode] = useState(generateOTPArray(6));
 
   const emailRef = useRef<HTMLInputElement>(null);
   const otpRefs = useMemo(
-    () => Array.from({ length: 4 }, () => React.createRef<HTMLInputElement>()),
+    () => Array.from({ length: 6 }, () => React.createRef<HTMLInputElement>()),
     [],
   );
   const prefersReduced = useReducedMotion();
 
-  const isValid = (v: string) => /.+@[^.]+\.([a-zA-Z]{2,})$/.test(v);
+  const isValid = isValidEmail;
 
   const goVerifying = async () => {
     if (!isValid(email)) return;
@@ -32,7 +34,7 @@ export default function VerifyEmail() {
 
   const back = () => {
     setView((prev) => (prev === "otp" ? "typing" : "idle"));
-    setCode(["", "", "", ""]);
+    setCode(generateOTPArray(6));
   };
 
   useEffect(() => {
@@ -86,7 +88,7 @@ export default function VerifyEmail() {
     const next = [...code];
     next[i] = v;
     setCode(next);
-    if (v && i < 3) otpRefs[i + 1].current?.focus();
+    if (v && i < 5) otpRefs[i + 1].current?.focus();
   };
 
   const onCodeKeyDown = (
@@ -116,14 +118,15 @@ export default function VerifyEmail() {
           </div>
 
           <h1 className={styles.mainHeadline}>
-            Your <span className={styles.highlightText}>Work</span> Note<br />
+            Your <span className={styles.highlightText}>Work</span> Note
+            <br />
             is Minutes Away
           </h1>
 
           <p className={styles.description}>
-            Note: Due to capacity we are currently only able to provide a limited
-            number of notes per day. To see if you qualify please fill out the
-            following short survey!
+            Note: Due to capacity we are currently only able to provide a
+            limited number of notes per day. To see if you qualify please fill
+            out the following short survey!
           </p>
 
           <div className={styles.testimonial}>
@@ -137,57 +140,141 @@ export default function VerifyEmail() {
               </div>
               <div className={styles.ratingAndTimestamp}>
                 <div className={styles.stars}>
-                  <img src="/star.png" alt="star" className={styles.starIcon} />
-                  <img src="/star.png" alt="star" className={styles.starIcon} />
-                  <img src="/star.png" alt="star" className={styles.starIcon} />
-                  <img src="/star.png" alt="star" className={styles.starIcon} />
-                  <img src="/star.png" alt="star" className={styles.starIcon} />
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <img
+                      key={i}
+                      src="/star.png"
+                      alt="star"
+                      className={styles.starIcon}
+                    />
+                  ))}
                 </div>
                 <div className={styles.timestamp}>1 week ago</div>
               </div>
               <p className={styles.testimonialText}>
-                Woke up with severe stomach flu and needed documentation for work.
-                The doctor was thorough, professional, and I had my note in minutes.
+                Woke up with severe stomach flu and needed documentation for
+                work. The doctor was thorough, professional, and I had my note
+                in minutes.
               </p>
             </div>
             <div className={styles.carouselDots}>
-              <div className={`${styles.dot} ${styles.dotActive}`}></div>
-              <div className={`${styles.dot} ${styles.dotInactive}`}></div>
-              <div className={`${styles.dot} ${styles.dotInactive}`}></div>
+              <div className={`${styles.dot} ${styles.dotActive}`} />
+              <div className={`${styles.dot} ${styles.dotInactive}`} />
+              <div className={`${styles.dot} ${styles.dotInactive}`} />
             </div>
           </div>
         </div>
 
-        {/* RIGHT PANEL */}
         <div className={styles.rightPanel}>
           <motion.div
             className={styles.formContainer}
-            variants={fadeUp}
             initial="hidden"
             animate="show"
             exit="exit"
+            variants={fadeUp}
           >
+            <motion.div
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              variants={fadeUp}
+            >
+              <div className={styles.stepIndicator}>
+                Step 3<span className={styles.stepTotal}>/9</span>
+              </div>
+              <h2 className={styles.question}>What is your email?</h2>
+              <p className={styles.subtitle}>This is where we send the note</p>
+            </motion.div>
+
             <LayoutGroup>
-              <AnimatePresence mode="wait">
-                {view === "otp" ? (
+              <AnimatePresence mode="popLayout">
+                {(view === "idle" ||
+                  view === "typing" ||
+                  view === "verifying") && (
                   <motion.div
-                    key="otp"
-                    className={styles.verificationSection}
-                    layoutId="emailCard"
+                    key="email"
                     layout
+                    layoutId="emailCard"
+                    className={styles.morphContainer}
+                    style={{ transformOrigin: "top center" }}
                     initial={cardInitial}
                     animate={cardEnter}
                     exit={cardExit}
+                    transition={{ layout: { duration: 0.38, ease: bezOut } }}
+                  >
+                    <motion.div
+                      layoutId="emailHeader"
+                      className="h-0 overflow-hidden"
+                      aria-hidden
+                    />
+
+                    <div className={styles.emailInputContainer}>
+                      <input
+                        ref={emailRef}
+                        type="email"
+                        inputMode="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={onEmailChange}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" && isValid(email))
+                            goVerifying();
+                        }}
+                        className={styles.emailInput}
+                        aria-label="Email address"
+                      />
+
+                      <AnimatePresence>
+                        {isValid(email) &&
+                          (view === "typing" || view === "verifying") && (
+                            <motion.span
+                              key="spinner"
+                              className={
+                                styles.loadingSpinner +
+                                " h-5 w-5 border-2 border-primary/30 border-t-primary rounded-full"
+                              }
+                              initial={{
+                                opacity: 0,
+                                scale: prefersReduced ? 1 : 0.8,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                scale: 1,
+                                transition: timings.in,
+                              }}
+                              exit={{
+                                opacity: 0,
+                                scale: prefersReduced ? 1 : 0.9,
+                                transition: timings.out,
+                              }}
+                            />
+                          )}
+                      </AnimatePresence>
+                    </div>
+                  </motion.div>
+                )}
+
+                {view === "otp" && (
+                  <motion.div
+                    key="otp"
+                    layout
+                    layoutId="emailCard"
+                    className={styles.verificationSection}
+                    style={{ transformOrigin: "top center" }}
+                    initial={cardInitial}
+                    animate={cardEnter}
+                    exit={cardExit}
+                    transition={{ layout: { duration: 0.38, ease: bezOut } }}
                   >
                     <motion.div
                       layoutId="emailHeader"
                       className={styles.verificationHeader}
                       initial={{ y: -20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ 
-                        duration: 0.6, 
+                      transition={{
+                        duration: 0.6,
                         ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.05 
+                        delay: 0.05,
                       }}
                     >
                       <div className={styles.emailInfo}>
@@ -209,7 +296,7 @@ export default function VerifyEmail() {
                       transition={{
                         duration: 0.6,
                         ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.7 
+                        delay: 0.7,
                       }}
                     >
                       <h2 className={styles.verificationTitle}>
@@ -258,40 +345,6 @@ export default function VerifyEmail() {
                       </div>
                     </motion.div>
                   </motion.div>
-                ) : (
-                  <motion.div
-                    key="email"
-                    className={styles.morphContainer}
-                    layoutId="emailCard"
-                    layout
-                    initial={cardInitial}
-                    animate={cardEnter}
-                    exit={cardExit}
-                  >
-                    <div className={styles.stepIndicator}>
-                      Step 3<span className={styles.stepTotal}>/9</span>
-                    </div>
-                    <h2 className={styles.question}>What is your email?</h2>
-                    <p className={styles.subtitle}>
-                      This is where we send the note
-                    </p>
-
-                    <div className={styles.emailInputContainer}>
-                      <input
-                        ref={emailRef}
-                        type="email"
-                        inputMode="email"
-                        placeholder="Enter your email"
-                        className={styles.emailInput}
-                        aria-label="Email address"
-                        value={email}
-                        onChange={onEmailChange}
-                      />
-                      {isValid(email) && (
-                        <div className={styles.loadingSpinner} />
-                      )}
-                    </div>
-                  </motion.div>
                 )}
 
                 {/* Navigation Buttons - Always Outside OTP Frame */}
@@ -316,12 +369,16 @@ export default function VerifyEmail() {
 
                   <motion.button
                     className={
-                      view === "otp" 
-                        ? (code.every((c) => c) ? styles.nextButtonEnabled : styles.nextButtonDisabled)
-                        : (isValid(email) ? styles.nextButtonEnabled : styles.nextButtonDisabled)
+                      view === "otp"
+                        ? code.every((c) => c)
+                          ? styles.nextButtonEnabled
+                          : styles.nextButtonDisabled
+                        : isValid(email)
+                          ? styles.nextButtonEnabled
+                          : styles.nextButtonDisabled
                     }
                     disabled={
-                      view === "otp" 
+                      view === "otp"
                         ? !code.every((c) => c)
                         : !isValid(email) || view === "verifying"
                     }
