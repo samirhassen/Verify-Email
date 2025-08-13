@@ -16,7 +16,13 @@
   left: 16px;
   width: 98px;
   height: 25px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
@@ -45,7 +51,13 @@
 .moneyBackGuaranteeText {
   width: 152px;
   height: 20px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -61,7 +73,13 @@
   left: 14px;
   width: 300px;
   height: auto;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 48px;
@@ -82,7 +100,13 @@
   left: 16px;
   width: 100%;
   max-width: 322px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -115,7 +139,13 @@
   color: #fab020;
   font-weight: 700;
   font-size: 16px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
 }
 
 .userInfo {
@@ -125,7 +155,13 @@
 }
 
 .userName {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -133,7 +169,13 @@
 }
 
 .userLocation {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -162,7 +204,13 @@
 }
 
 .timestamp {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -170,7 +218,13 @@
 }
 
 .testimonialText {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -231,7 +285,13 @@
   width: 100%;
   line-height: 26px;
   letter-spacing: -0.05em;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
 }
 
 .stepTotal {
@@ -239,7 +299,13 @@
 }
 
 .question {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: #0d0d12;
@@ -256,7 +322,13 @@
   color: #6b7280;
   margin-bottom: 24px;
   line-height: 24px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
 }
 
 .emailInputContainer {
@@ -361,7 +433,13 @@
   border: none;
   border-radius: 8px;
   padding: 11px 44.5px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
@@ -385,7 +463,13 @@
   border: none;
   border-radius: 8px;
   padding: 11px 44.5px;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-size: 18px;
   font-weight: 700;
   cursor: not-allowed;
@@ -449,7 +533,13 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -471,7 +561,13 @@
 }
 
 .verificationTitle {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #111827;
@@ -481,7 +577,13 @@
 }
 
 .verificationSubtitle {
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Satoshi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   font-size: 16px;
   color: #374151;
   line-height: 24px;

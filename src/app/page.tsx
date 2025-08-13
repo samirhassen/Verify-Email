@@ -118,7 +118,8 @@ export default function VerifyEmail() {
           </div>
 
           <h1 className={styles.mainHeadline}>
-            Your <span className={styles.highlightText}>Work</span> Note<br />
+            Your <span className={styles.highlightText}>Work</span> Note
+            <br />
             is Minutes Away
           </h1>
 
