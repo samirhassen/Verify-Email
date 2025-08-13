@@ -1,7 +1,7 @@
 /* VerifyEmail Component Styles - CSS Module */
 
 .leftPanel {
-  background-color: #E8F0FF;
+  background-color: #e8f0ff;
   position: relative;
   width: 100%;
   min-width: 354px;
@@ -14,7 +14,7 @@
   left: 14px;
   width: 98px;
   height: 25px;
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
@@ -43,12 +43,12 @@
 .moneyBackGuaranteeText {
   width: 152px;
   height: 20px;
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0%;
-  color: #2563EB;
+  color: #2563eb;
   display: flex;
   align-items: center;
   white-space: nowrap;
@@ -61,7 +61,7 @@
   min-width: 235px;
   width: 100%;
   max-width: 300px;
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 44px;
@@ -72,7 +72,7 @@
 }
 
 .highlightText {
-  color: #2563EB;
+  color: #2563eb;
 }
 
 .description {
@@ -81,7 +81,7 @@
   left: 14px;
   width: 100%;
   max-width: 322px;
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -106,15 +106,15 @@
 .avatar {
   width: 40px;
   height: 40px;
-  background-color: #FAB02029;
+  background-color: #fab02029;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FAB020;
+  color: #fab020;
   font-weight: 700;
   font-size: 16px;
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
 }
 
 .userInfo {
@@ -124,19 +124,19 @@
 }
 
 .userName {
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  color: #1E293B;
+  color: #1e293b;
 }
 
 .userLocation {
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #64748B;
+  color: #64748b;
 }
 
 .ratingAndTimestamp {
@@ -161,19 +161,19 @@
 }
 
 .timestamp {
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #64748B;
+  color: #64748b;
 }
 
 .testimonialText {
-  font-family: 'Satoshi', sans-serif;
+  font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #1E293B;
+  color: #1e293b;
   margin-top: 8px;
 }
 
@@ -192,11 +192,11 @@
 }
 
 .dotActive {
-  background-color: #2563EB;
+  background-color: #2563eb;
 }
 
 .dotInactive {
-  background-color: #CBD5E1;
+  background-color: #cbd5e1;
 }
 
 .rightPanel {
@@ -219,7 +219,7 @@
 }
 
 .stepIndicator {
-  color: #2563EB;
+  color: #2563eb;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 12px;
@@ -231,14 +231,14 @@
 }
 
 .stepTotal {
-  color: #6B7280;
+  color: #6b7280;
 }
 
 .question {
   font-family: var(--font-satoshi);
   font-size: 32px;
   font-weight: 700;
-  color: #0D0D12;
+  color: #0d0d12;
   margin-bottom: 12px;
   line-height: 48px;
   letter-spacing: -1px;
@@ -248,7 +248,7 @@
 
 .subtitle {
   font-size: 16px;
-  color: #6B7280;
+  color: #6b7280;
   margin-bottom: 24px;
   line-height: 24px;
   font-family: var(--font-satoshi);
@@ -258,29 +258,28 @@
   position: relative;
   width: 660px;
   margin-bottom: 32px;
-  transform-origin: top left;
 }
 
 .emailInput {
   width: 100%;
   height: 48px;
-  border: 1px solid #2563EB;
+  border: 1px solid #2563eb;
   border-radius: 8px;
   padding: 0 16px;
   font-size: 16px;
   color: #111827;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
   padding-right: 56px;
 }
 
 .emailInput::placeholder {
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 .emailInput:focus {
   outline: none;
-  border-color: #2563EB;
+  border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
 }
 
@@ -292,14 +291,25 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, #2563EB 0deg, transparent 90deg, #2563EB 180deg, transparent 270deg, #2563EB 360deg);
+  background: conic-gradient(
+    from 0deg,
+    #2563eb 0deg,
+    transparent 90deg,
+    #2563eb 180deg,
+    transparent 270deg,
+    #2563eb 360deg
+  );
   animation: spin 1s linear infinite;
   mask: radial-gradient(circle at center, transparent 8px, black 8px);
 }
 
 @keyframes spin {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-50%) rotate(360deg); }
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
 
 .navigationButtons {
@@ -311,7 +321,7 @@
 }
 
 .backButton {
-  color: #2563EB;
+  color: #2563eb;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
@@ -331,13 +341,13 @@
 .backArrow {
   width: 28px;
   height: 48px;
-  color: #2563EB;
+  color: #2563eb;
   flex-shrink: 0;
 }
 
 .nextButtonEnabled {
-  background: #4B5563;
-  color: #FFFFFF;
+  background: #4b5563;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   padding: 11px 44.5px;
@@ -359,8 +369,8 @@
 }
 
 .nextButtonDisabled {
-  background: #9CA3AF;
-  color: #FFFFFF;
+  background: #9ca3af;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   padding: 11px 44.5px;
@@ -384,32 +394,32 @@
     max-width: 100%;
     width: 100%;
   }
-  
+
   .rightPanel {
     padding: 16px 24px;
   }
-  
+
   .mainHeadline {
     min-width: 235px;
     width: calc(100% - 28px);
     font-size: 28px;
     line-height: 38px;
   }
-  
+
   .description {
     width: calc(100% - 28px);
     font-size: 14px;
     line-height: 20px;
   }
-  
+
   .testimonialCard {
     padding: 16px;
   }
-  
+
   .formContainer {
     max-width: 100%;
   }
-  
+
   .question {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -422,12 +432,12 @@
     line-height: 32px;
     min-width: 235px;
   }
-  
+
   .description {
     font-size: 13px;
     line-height: 18px;
   }
-  
+
   .rightPanel {
     padding: 12px 16px;
   }
@@ -438,16 +448,16 @@
   width: 660px;
   margin-bottom: 32px;
   text-align: left;
-  border: 1px solid #DFE1E6;
+  border: 1px solid #dfe1e6;
   border-radius: 8px;
-  background: #FFFFFF;
+  background: #ffffff;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
 .verificationHeader {
-  background: #E8F0FF;
+  background: #e8f0ff;
   margin: 0 0 20px 0;
   padding: 12px 20px;
   border-radius: 8px 8px 0 0;
@@ -463,7 +473,7 @@
 }
 
 .emailLabel {
-  color: #2563EB;
+  color: #2563eb;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -500,7 +510,7 @@
 
 .verificationContent {
   padding: 20px 20px;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .verificationTitle {
@@ -539,30 +549,30 @@
 .codeInput {
   width: 56px;
   height: 56px;
-  border: 2px solid #E5E7EB;
+  border: 2px solid #e5e7eb;
   border-radius: 8px;
   text-align: center;
   font-size: 24px;
   font-weight: 700;
   color: #111827;
-  background: #FFFFFF;
+  background: #ffffff;
   transition: border-color 0.2s ease;
 }
 
 .codeInput:focus {
   outline: none;
-  border-color: #2563EB;
+  border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
 }
 
 .resendOption {
   font-size: 14px;
-  color: #6B7280;
+  color: #6b7280;
   text-align: left;
 }
 
 .resendButton {
-  color: #2563EB;
+  color: #2563eb;
   background: none;
   border: none;
   cursor: pointer;

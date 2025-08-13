@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface AnimatedCardProps {
   title: string;
@@ -24,7 +24,7 @@ export default function AnimatedCard({
     >
       <motion.h3
         className="text-xl font-bold text-gray-800 mb-2"
-        whileHover={{ color: '#3B82F6' }}
+        whileHover={{ color: "#3B82F6" }}
       >
         {title}
       </motion.h3>

@@ -1,84 +1,103 @@
-'use client'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion'
-import styles from './verifyemail.module.css'
+"use client";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+import styles from "./verifyemail.module.css";
 
-type View = 'idle' | 'typing' | 'verifying' | 'otp'
+type View = "idle" | "typing" | "verifying" | "otp";
 
 export default function VerifyEmail() {
-  const [email, setEmail] = useState('')
-  const [view, setView] = useState<View>('idle')
-  const [code, setCode] = useState(['', '', '', ''])
+  const [email, setEmail] = useState("");
+  const [view, setView] = useState<View>("idle");
+  const [code, setCode] = useState(["", "", "", ""]);
 
-  const emailRef = useRef<HTMLInputElement>(null)
-  const otpRefs = useMemo(() => Array.from({ length: 4 }, () => React.createRef<HTMLInputElement>()), [])
-  const prefersReduced = useReducedMotion()
+  const emailRef = useRef<HTMLInputElement>(null);
+  const otpRefs = useMemo(
+    () => Array.from({ length: 4 }, () => React.createRef<HTMLInputElement>()),
+    [],
+  );
+  const prefersReduced = useReducedMotion();
 
-  const isValid = (v: string) => /.+@[^.]+\.([a-zA-Z]{2,})$/.test(v)
+  const isValid = (v: string) => /.+@[^.]+\.([a-zA-Z]{2,})$/.test(v);
 
   const goVerifying = async () => {
-    if (!isValid(email)) return
-    setView('verifying')
-    await new Promise(r => setTimeout(r, 300)) 
-    setView('otp')
-  }
+    if (!isValid(email)) return;
+    setView("verifying");
+    await new Promise((r) => setTimeout(r, 300));
+    setView("otp");
+  };
 
   const back = () => {
-    setView(prev => (prev === 'otp' ? 'typing' : 'idle'))
-    setCode(['', '', '', ''])
-  }
+    setView((prev) => (prev === "otp" ? "typing" : "idle"));
+    setCode(["", "", "", ""]);
+  };
 
-  
   useEffect(() => {
-    if (view === 'otp') otpRefs[0].current?.focus()
-    if (view === 'typing') emailRef.current?.focus()
-  }, [view, otpRefs])
+    if (view === "otp") otpRefs[0].current?.focus();
+    if (view === "typing") emailRef.current?.focus();
+  }, [view, otpRefs]);
 
-  const bezOut = [0.22, 0.61, 0.36, 1] as const  // smooth, slightly springy
-  const bezIn  = [0.4, 0, 1, 1] as const         // fast exit
+  const bezOut = [0.22, 0.61, 0.36, 1] as const; // smooth, slightly springy
+  const bezIn = [0.4, 0, 1, 1] as const; // fast exit
   const timings = {
-    in:   { duration: 0.45, ease: bezOut },
-    out:  { duration: 0.25, ease: bezIn },
+    in: { duration: 0.45, ease: bezOut },
+    out: { duration: 0.25, ease: bezIn },
     stag: 0.06,
-  }
+  };
 
   const fadeUp = {
     hidden: { opacity: 0, y: prefersReduced ? 0 : 12 },
-    show:   { opacity: 1, y: 0, transition: timings.in },
-    exit:   { opacity: 0, y: prefersReduced ? 0 : -6, transition: timings.out },
-  }
+    show: { opacity: 1, y: 0, transition: timings.in },
+    exit: { opacity: 0, y: prefersReduced ? 0 : -6, transition: timings.out },
+  };
 
-  const cardInitial = { opacity: 0, y: prefersReduced ? 0 : 8, scale: prefersReduced ? 1 : 0.995 }
-  const cardEnter   = {
+  const cardInitial = {
+    opacity: 0,
+    y: prefersReduced ? 0 : 8,
+    scale: prefersReduced ? 1 : 0.995,
+  };
+  const cardEnter = {
     opacity: 1,
     y: 0,
     scale: 1,
-    boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 8px 20px rgba(2,12,27,0.06)'],
+    boxShadow: ["0 0 0 rgba(0,0,0,0)", "0 8px 20px rgba(2,12,27,0.06)"],
     transition: { ...timings.in, layout: { duration: 0.38, ease: bezOut } },
-  }
-  const cardExit    = { opacity: 0, scale: prefersReduced ? 1 : 0.995, transition: { ...timings.out, layout: { duration: 0.22, ease: bezIn } } }
+  };
+  const cardExit = {
+    opacity: 0,
+    scale: prefersReduced ? 1 : 0.995,
+    transition: { ...timings.out, layout: { duration: 0.22, ease: bezIn } },
+  };
 
   const otpKeyframes = prefersReduced
     ? { opacity: [0, 1] }
-    : { opacity: [0, 1], y: [8, 0], scale: [0.98, 1.02, 1] }
+    : { opacity: [0, 1], y: [8, 0], scale: [0.98, 1.02, 1] };
 
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = e.target.value
-    setEmail(v)
-    if (v && view === 'idle') setView('typing')
-  }
+    const v = e.target.value;
+    setEmail(v);
+    if (v && view === "idle") setView("typing");
+  };
 
   const onCodeChange = (i: number, v: string) => {
-    if (!/^\d?$/.test(v)) return
-    const next = [...code]
-    next[i] = v
-    setCode(next)
-    if (v && i < 3) otpRefs[i + 1].current?.focus()
-  }
+    if (!/^\d?$/.test(v)) return;
+    const next = [...code];
+    next[i] = v;
+    setCode(next);
+    if (v && i < 3) otpRefs[i + 1].current?.focus();
+  };
 
-  const onCodeKeyDown = (i: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace' && !code[i] && i > 0) otpRefs[i - 1].current?.focus()
-  }
+  const onCodeKeyDown = (
+    i: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (e.key === "Backspace" && !code[i] && i > 0)
+      otpRefs[i - 1].current?.focus();
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -88,16 +107,26 @@ export default function VerifyEmail() {
           <div className={styles.onlinemedBrand}>OnlineMed</div>
 
           <div className={styles.moneyBackGuarantee}>
-            <img src="/icon.png" alt="Money Back Guarantee" className={styles.moneyBackGuaranteeIcon} />
-            <span className={styles.moneyBackGuaranteeText}>Money Back Guarantee</span>
+            <img
+              src="/icon.png"
+              alt="Money Back Guarantee"
+              className={styles.moneyBackGuaranteeIcon}
+            />
+            <span className={styles.moneyBackGuaranteeText}>
+              Money Back Guarantee
+            </span>
           </div>
 
           <h1 className={styles.mainHeadline}>
-            Your <span className={styles.highlightText}>Work</span> Note<br />is Minutes Away
+            Your <span className={styles.highlightText}>Work</span> Note
+            <br />
+            is Minutes Away
           </h1>
 
           <p className={styles.description}>
-            Note: Due to capacity we are currently only able to provide a limited number of notes per day. To see if you qualify please fill out the following short survey!
+            Note: Due to capacity we are currently only able to provide a
+            limited number of notes per day. To see if you qualify please fill
+            out the following short survey!
           </p>
 
           <div className={styles.testimonial}>
@@ -112,13 +141,20 @@ export default function VerifyEmail() {
               <div className={styles.ratingAndTimestamp}>
                 <div className={styles.stars}>
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <img key={i} src="/star.png" alt="star" className={styles.starIcon} />
+                    <img
+                      key={i}
+                      src="/star.png"
+                      alt="star"
+                      className={styles.starIcon}
+                    />
                   ))}
                 </div>
                 <div className={styles.timestamp}>1 week ago</div>
               </div>
               <p className={styles.testimonialText}>
-                Woke up with severe stomach flu and needed documentation for work. The doctor was thorough, professional, and I had my note in minutes.
+                Woke up with severe stomach flu and needed documentation for
+                work. The doctor was thorough, professional, and I had my note
+                in minutes.
               </p>
             </div>
             <div className={styles.carouselDots}>
@@ -130,8 +166,19 @@ export default function VerifyEmail() {
         </div>
 
         <div className={styles.rightPanel}>
-          <motion.div className={styles.formContainer} initial="hidden" animate="show" exit="exit" variants={fadeUp}>
-            <motion.div initial="hidden" animate="show" exit="exit" variants={fadeUp}>
+          <motion.div
+            className={styles.formContainer}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            variants={fadeUp}
+          >
+            <motion.div
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              variants={fadeUp}
+            >
               <div className={styles.stepIndicator}>
                 Step 3<span className={styles.stepTotal}>/9</span>
               </div>
@@ -141,13 +188,15 @@ export default function VerifyEmail() {
 
             <LayoutGroup>
               <AnimatePresence mode="popLayout">
-                {(view === 'idle' || view === 'typing' || view === 'verifying') && (
+                {(view === "idle" ||
+                  view === "typing" ||
+                  view === "verifying") && (
                   <motion.div
                     key="email"
                     layout
                     layoutId="emailCard"
                     className={styles.morphContainer}
-                    style={{ transformOrigin: 'top center' }}
+                    style={{ transformOrigin: "top center" }}
                     initial={cardInitial}
                     animate={cardEnter}
                     exit={cardExit}
@@ -167,21 +216,39 @@ export default function VerifyEmail() {
                         placeholder="Enter your email"
                         value={email}
                         onChange={onEmailChange}
-                        onKeyDown={(e) => { if (e.key === 'Enter' && isValid(email)) goVerifying() }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" && isValid(email))
+                            goVerifying();
+                        }}
                         className={styles.emailInput}
                         aria-label="Email address"
                       />
 
                       <AnimatePresence>
-                        {(isValid(email) && (view === 'typing' || view === 'verifying')) && (
-                          <motion.span
-                            key="spinner"
-                            className={styles.loadingSpinner + ' h-5 w-5 border-2 border-primary/30 border-t-primary rounded-full'}
-                            initial={{ opacity: 0, scale: prefersReduced ? 1 : 0.8 }}
-                            animate={{ opacity: 1, scale: 1, transition: timings.in }}
-                            exit={{ opacity: 0, scale: prefersReduced ? 1 : 0.9, transition: timings.out }}
-                          />
-                        )}
+                        {isValid(email) &&
+                          (view === "typing" || view === "verifying") && (
+                            <motion.span
+                              key="spinner"
+                              className={
+                                styles.loadingSpinner +
+                                " h-5 w-5 border-2 border-primary/30 border-t-primary rounded-full"
+                              }
+                              initial={{
+                                opacity: 0,
+                                scale: prefersReduced ? 1 : 0.8,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                scale: 1,
+                                transition: timings.in,
+                              }}
+                              exit={{
+                                opacity: 0,
+                                scale: prefersReduced ? 1 : 0.9,
+                                transition: timings.out,
+                              }}
+                            />
+                          )}
                       </AnimatePresence>
                     </div>
 
@@ -192,50 +259,72 @@ export default function VerifyEmail() {
                         whileHover={prefersReduced ? {} : { scale: 1.02 }}
                         whileTap={prefersReduced ? {} : { scale: 0.98 }}
                       >
-                        <svg className={styles.backArrow} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <svg
+                          className={styles.backArrow}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                        >
                           <path d="M15 18l-6-6 6-6" />
                         </svg>
                         Back
                       </motion.button>
 
                       <motion.button
-                        className={isValid(email) ? styles.nextButtonEnabled : styles.nextButtonDisabled}
-                        disabled={!isValid(email) || view === 'verifying'}
+                        className={
+                          isValid(email)
+                            ? styles.nextButtonEnabled
+                            : styles.nextButtonDisabled
+                        }
+                        disabled={!isValid(email) || view === "verifying"}
                         onClick={goVerifying}
                         whileHover={prefersReduced ? {} : { scale: 1.02 }}
                         whileTap={prefersReduced ? {} : { scale: 0.98 }}
                         aria-live="polite"
                       >
-                        {view === 'verifying' ? 'Sending…' : 'Next'}
+                        {view === "verifying" ? "Sending…" : "Next"}
                       </motion.button>
                     </div>
                   </motion.div>
                 )}
 
-                {view === 'otp' && (
+                {view === "otp" && (
                   <motion.div
                     key="otp"
                     layout
                     layoutId="emailCard"
                     className={styles.verificationSection}
-                    style={{ transformOrigin: 'top center' }}
+                    style={{ transformOrigin: "top center" }}
                     initial={cardInitial}
                     animate={cardEnter}
                     exit={cardExit}
                     transition={{ layout: { duration: 0.38, ease: bezOut } }}
                   >
-                    <motion.div layoutId="emailHeader" className={styles.verificationHeader}>
+                    <motion.div
+                      layoutId="emailHeader"
+                      className={styles.verificationHeader}
+                    >
                       <div className={styles.emailInfo}>
                         <span className={styles.emailLabel}>Email</span>
                         <span className={styles.emailAddress}>{email}</span>
                       </div>
-                      <button className={styles.changeButton} onClick={() => setView('typing')}>Change</button>
+                      <button
+                        className={styles.changeButton}
+                        onClick={() => setView("typing")}
+                      >
+                        Change
+                      </button>
                     </motion.div>
 
                     <div className={styles.verificationContent}>
-                      <h2 className={styles.verificationTitle}>Enter verification code</h2>
+                      <h2 className={styles.verificationTitle}>
+                        Enter verification code
+                      </h2>
                       <p className={styles.verificationSubtitle}>
-                        Enter the code sent to <span className={styles.emailHighlight}>{email}</span> to use your saved information.
+                        Enter the code sent to{" "}
+                        <span className={styles.emailHighlight}>{email}</span>{" "}
+                        to use your saved information.
                       </p>
 
                       <div className={styles.codeInputs}>
@@ -251,15 +340,27 @@ export default function VerifyEmail() {
                             onChange={(e) => onCodeChange(i, e.target.value)}
                             onKeyDown={(e) => onCodeKeyDown(i, e)}
                             className={styles.codeInput}
-                            initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.98 }}
-                            animate={{ ...otpKeyframes, transition: { ...timings.in, delay: i * timings.stag } }}
+                            initial={
+                              prefersReduced
+                                ? { opacity: 0 }
+                                : { opacity: 0, y: 8, scale: 0.98 }
+                            }
+                            animate={{
+                              ...otpKeyframes,
+                              transition: {
+                                ...timings.in,
+                                delay: i * timings.stag,
+                              },
+                            }}
                           />
                         ))}
                       </div>
 
                       <div className={styles.resendOption}>
-                        <span>Didn't receive a code? </span>
-                        <button className={styles.resendButton}>Send again</button>
+                        <span>{"Didn't receive a code? "}</span>
+                        <button className={styles.resendButton}>
+                          Send again
+                        </button>
                       </div>
                     </div>
 
@@ -270,15 +371,25 @@ export default function VerifyEmail() {
                         whileHover={prefersReduced ? {} : { scale: 1.02 }}
                         whileTap={prefersReduced ? {} : { scale: 0.98 }}
                       >
-                        <svg className={styles.backArrow} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                        <svg
+                          className={styles.backArrow}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                        >
                           <path d="M15 18l-6-6 6-6" />
                         </svg>
                         Back
                       </motion.button>
 
                       <motion.button
-                        className={code.every(c => c) ? styles.nextButtonEnabled : styles.nextButtonDisabled}
-                        disabled={!code.every(c => c)}
+                        className={
+                          code.every((c) => c)
+                            ? styles.nextButtonEnabled
+                            : styles.nextButtonDisabled
+                        }
+                        disabled={!code.every((c) => c)}
                         whileHover={prefersReduced ? {} : { scale: 1.02 }}
                         whileTap={prefersReduced ? {} : { scale: 0.98 }}
                       >
@@ -293,5 +404,5 @@ export default function VerifyEmail() {
         </div>
       </div>
     </div>
-  )
+  );
 }

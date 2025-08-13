@@ -1,5 +1,5 @@
-import VerifyEmail from '../verifyemail'
+import VerifyEmail from "../verifyemail";
 
 export default function VerifyEmailPage() {
-  return <VerifyEmail />
+  return <VerifyEmail />;
 }
