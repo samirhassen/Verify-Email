@@ -64,7 +64,6 @@ export default function VerifyEmail() {
     opacity: 1,
     y: 0,
     scale: 1,
-    boxShadow: ["0 0 0 rgba(0,0,0,0)", "0 8px 20px rgba(2,12,27,0.06)"],
     transition: { ...timings.in, layout: { duration: 0.38, ease: bezOut } },
   };
   const cardExit = {
@@ -251,41 +250,6 @@ export default function VerifyEmail() {
                           )}
                       </AnimatePresence>
                     </div>
-
-                    <div className={styles.navigationButtons}>
-                      <motion.button
-                        className={styles.backButton}
-                        onClick={back}
-                        whileHover={prefersReduced ? {} : { scale: 1.02 }}
-                        whileTap={prefersReduced ? {} : { scale: 0.98 }}
-                      >
-                        <svg
-                          className={styles.backArrow}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                        >
-                          <path d="M15 18l-6-6 6-6" />
-                        </svg>
-                        Back
-                      </motion.button>
-
-                      <motion.button
-                        className={
-                          isValid(email)
-                            ? styles.nextButtonEnabled
-                            : styles.nextButtonDisabled
-                        }
-                        disabled={!isValid(email) || view === "verifying"}
-                        onClick={goVerifying}
-                        whileHover={prefersReduced ? {} : { scale: 1.02 }}
-                        whileTap={prefersReduced ? {} : { scale: 0.98 }}
-                        aria-live="polite"
-                      >
-                        {view === "verifying" ? "Sending…" : "Next"}
-                      </motion.button>
-                    </div>
                   </motion.div>
                 )}
 
@@ -304,6 +268,13 @@ export default function VerifyEmail() {
                     <motion.div
                       layoutId="emailHeader"
                       className={styles.verificationHeader}
+                      initial={{ y: -20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: 0.05 
+                      }}
                     >
                       <div className={styles.emailInfo}>
                         <span className={styles.emailLabel}>Email</span>
@@ -317,7 +288,16 @@ export default function VerifyEmail() {
                       </button>
                     </motion.div>
 
-                    <div className={styles.verificationContent}>
+                    <motion.div 
+                      className={styles.verificationContent}
+                      initial={{ y: 15, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ 
+                        duration: 0.6, 
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                        delay: 0.7 
+                      }}
+                    >
                       <h2 className={styles.verificationTitle}>
                         Enter verification code
                       </h2>
@@ -343,13 +323,13 @@ export default function VerifyEmail() {
                             initial={
                               prefersReduced
                                 ? { opacity: 0 }
-                                : { opacity: 0, y: 8, scale: 0.98 }
+                                : { opacity: 0, y: 4, scale: 0.98 }
                             }
                             animate={{
                               ...otpKeyframes,
                               transition: {
                                 ...timings.in,
-                                delay: i * timings.stag,
+                                delay: i * 0.08 + 1.4,
                               },
                             }}
                           />
@@ -362,42 +342,48 @@ export default function VerifyEmail() {
                           Send again
                         </button>
                       </div>
-                    </div>
-
-                    <div className={styles.navigationButtons}>
-                      <motion.button
-                        className={styles.backButton}
-                        onClick={back}
-                        whileHover={prefersReduced ? {} : { scale: 1.02 }}
-                        whileTap={prefersReduced ? {} : { scale: 0.98 }}
-                      >
-                        <svg
-                          className={styles.backArrow}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                        >
-                          <path d="M15 18l-6-6 6-6" />
-                        </svg>
-                        Back
-                      </motion.button>
-
-                      <motion.button
-                        className={
-                          code.every((c) => c)
-                            ? styles.nextButtonEnabled
-                            : styles.nextButtonDisabled
-                        }
-                        disabled={!code.every((c) => c)}
-                        whileHover={prefersReduced ? {} : { scale: 1.02 }}
-                        whileTap={prefersReduced ? {} : { scale: 0.98 }}
-                      >
-                        Next
-                      </motion.button>
-                    </div>
+                    </motion.div>
                   </motion.div>
                 )}
+
+                {/* Navigation Buttons - Always Outside OTP Frame */}
+                <div className={styles.navigationButtons}>
+                  <motion.button
+                    className={styles.backButton}
+                    onClick={back}
+                    whileHover={prefersReduced ? {} : { scale: 1.02 }}
+                    whileTap={prefersReduced ? {} : { scale: 0.98 }}
+                  >
+                    <svg
+                      className={styles.backArrow}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                    Back
+                  </motion.button>
+
+                  <motion.button
+                    className={
+                      view === "otp" 
+                        ? (code.every((c) => c) ? styles.nextButtonEnabled : styles.nextButtonDisabled)
+                        : (isValid(email) ? styles.nextButtonEnabled : styles.nextButtonDisabled)
+                    }
+                    disabled={
+                      view === "otp" 
+                        ? !code.every((c) => c)
+                        : !isValid(email) || view === "verifying"
+                    }
+                    onClick={view === "otp" ? undefined : goVerifying}
+                    whileHover={prefersReduced ? {} : { scale: 1.02 }}
+                    whileTap={prefersReduced ? {} : { scale: 0.98 }}
+                  >
+                    {view === "verifying" ? "Sending…" : "Next"}
+                  </motion.button>
+                </div>
               </AnimatePresence>
             </LayoutGroup>
           </motion.div>

@@ -216,6 +216,9 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  background: white;
+  box-shadow: none;
+  border: none;
 }
 
 .stepIndicator {
@@ -256,8 +259,8 @@
 
 .emailInputContainer {
   position: relative;
-  width: 660px;
-  margin-bottom: 32px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .emailInput {
@@ -316,8 +319,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 660px;
-  margin-top: -16px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-top: 0;
 }
 
 .backButton {
@@ -445,10 +451,10 @@
 
 /* Verification Section Styles */
 .verificationSection {
-  width: 660px;
-  margin-bottom: 32px;
+  width: 100%;
+  margin-bottom: 20px;
   text-align: left;
-  border: 1px solid #dfe1e6;
+  border: none;
   border-radius: 8px;
   background: #ffffff;
   overflow: hidden;
@@ -458,7 +464,7 @@
 
 .verificationHeader {
   background: #e8f0ff;
-  margin: 0 0 20px 0;
+  margin: 0;
   padding: 12px 20px;
   border-radius: 8px 8px 0 0;
   display: flex;
@@ -511,6 +517,9 @@
 .verificationContent {
   padding: 20px 20px;
   background: #ffffff;
+  border: 1px solid #dfe1e6;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
 }
 
 .verificationTitle {
@@ -612,6 +621,8 @@
 .morphContainer {
   width: 100%;
   position: relative;
+  box-shadow: none;
+  background: transparent;
 }
 
 /* Framer Motion Integration */
