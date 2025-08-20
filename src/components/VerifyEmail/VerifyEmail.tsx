@@ -10,6 +10,7 @@ import {
 import styles from "./VerifyEmail.module.css";
 import { View } from "./types";
 import { isValidEmail, generateOTPArray } from "./utils";
+import { animations } from "../../app/animations";
 
 export default function VerifyEmail() {
   const [email, setEmail] = useState("");
@@ -196,7 +197,7 @@ export default function VerifyEmail() {
                     layout
                     layoutId="emailCard"
                     className={styles.morphContainer}
-                    style={{ transformOrigin: "top center" }}
+                    {...animations.transformOrigin}
                     initial={cardInitial}
                     animate={cardEnter}
                     exit={cardExit}
@@ -233,18 +234,19 @@ export default function VerifyEmail() {
                                 styles.loadingSpinner +
                                 " h-5 w-5 border-2 border-primary/30 border-t-primary rounded-full"
                               }
-                              initial={{
-                                opacity: 0,
-                                scale: prefersReduced ? 1 : 0.8,
-                              }}
+                              {...animations.loadingSpinner(
+                                prefersReduced ?? false,
+                              )}
                               animate={{
-                                opacity: 1,
-                                scale: 1,
+                                ...animations.loadingSpinner(
+                                  prefersReduced ?? false,
+                                ).animate,
                                 transition: timings.in,
                               }}
                               exit={{
-                                opacity: 0,
-                                scale: prefersReduced ? 1 : 0.9,
+                                ...animations.loadingSpinner(
+                                  prefersReduced ?? false,
+                                ).exit,
                                 transition: timings.out,
                               }}
                             />
@@ -260,7 +262,7 @@ export default function VerifyEmail() {
                     layout
                     layoutId="emailCard"
                     className={styles.verificationSection}
-                    style={{ transformOrigin: "top center" }}
+                    {...animations.transformOrigin}
                     initial={cardInitial}
                     animate={cardEnter}
                     exit={cardExit}
@@ -269,13 +271,7 @@ export default function VerifyEmail() {
                     <motion.div
                       layoutId="emailHeader"
                       className={styles.verificationHeader}
-                      initial={{ y: -20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.6,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.05,
-                      }}
+                      {...animations.emailHeader}
                     >
                       <div className={styles.emailInfo}>
                         <span className={styles.emailLabel}>Email</span>

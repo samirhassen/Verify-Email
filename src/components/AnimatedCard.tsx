@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import styles from "./AnimatedCard.module.css";
 
 interface AnimatedCardProps {
   title: string;
@@ -20,15 +21,12 @@ export default function AnimatedCard({
       transition={{ duration: 0.5, delay }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="bg-white rounded-lg shadow-lg p-6 cursor-pointer"
+      className={styles.card}
     >
-      <motion.h3
-        className="text-xl font-bold text-gray-800 mb-2"
-        whileHover={{ color: "#3B82F6" }}
-      >
+      <motion.h3 className={styles.title} whileHover={{ color: "#3B82F6" }}>
         {title}
       </motion.h3>
-      <p className="text-gray-600">{description}</p>
+      <p className={styles.description}>{description}</p>
     </motion.div>
   );
 }
