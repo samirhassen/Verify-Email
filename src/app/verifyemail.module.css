@@ -294,6 +294,8 @@
     sans-serif;
 }
 
+
+
 .stepTotal {
   color: #6b7280;
 }
@@ -312,9 +314,9 @@
   margin-bottom: 12px;
   line-height: 48px;
   letter-spacing: -1px;
-  width: 275px;
-  height: 48px;
-  text-align: center;
+  width: 100%;
+  height: auto;
+  text-align: left;
 }
 
 .subtitle {
@@ -329,6 +331,7 @@
     "Segoe UI",
     Roboto,
     sans-serif;
+  text-align: left;
 }
 
 .emailInputContainer {
@@ -654,15 +657,188 @@
    Responsive Design
    ========================================================================== */
 
+/* Mobile Header Styles */
+.mobileHeader {
+  background-color: #e8f0ff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Mobile header brand */
+.mobileHeader .onlinemedBrand {
+  position: static;
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+/* Mobile header money back guarantee */
+.mobileHeader .mobileMoneyBackGuarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mobileHeader .mobileMoneyBackGuarantee .moneyBackGuaranteeIcon {
+  width: 16.67px;
+  height: 16.67px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.mobileHeader .mobileMoneyBackGuarantee .moneyBackGuaranteeText {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+/* Mobile header main headline */
+.mobileHeader .mobileMainHeadline {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -1px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.mobileHeader .mobileMainHeadline .highlightText {
+  color: #2563eb;
+}
+
+/* Mobile header description */
+.mobileHeader .mobileDescription {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #475569;
+  margin-bottom: 0;
+}
+
+/* Hide mobile header on desktop */
+@media (min-width: 1024px) {
+  .mobileHeader {
+    display: none !important;
+  }
+}
+
+/* Mobile layout - stack left panel on top of right panel */
+@media (max-width: 1023px) {
+  .leftPanel {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    position: static;
+    order: 1;
+    margin-bottom: 32px;
+    padding: 24px;
+    height: auto;
+    min-height: auto;
+  }
+  
+  .rightPanel {
+    order: 2;
+    padding: 24px;
+    margin-top: 0;
+  }
+  
+  /* Change grid to flexbox for mobile stacking */
+  .grid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  /* Hide mobile header since we're showing the real left panel */
+  .mobileHeader {
+    display: none;
+  }
+  
+  /* Fix absolute positioning on mobile */
+  .leftPanel .onlinemedBrand,
+  .leftPanel .moneyBackGuarantee,
+  .leftPanel .mainHeadline,
+  .leftPanel .description,
+  .leftPanel .testimonial {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    margin-bottom: 16px;
+  }
+  
+  .leftPanel .onlinemedBrand {
+    margin-bottom: 20px;
+  }
+  
+  .leftPanel .mainHeadline {
+    margin-bottom: 16px;
+    width: 100%;
+    min-height: auto;
+  }
+  
+  .leftPanel .description {
+    margin-bottom: 24px;
+  }
+  
+  .leftPanel .testimonial {
+    margin-bottom: 0;
+  }
+}
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+  .rightPanel {
+    padding: 24px 32px;
+  }
+
+  .formContainer {
+    max-width: 100%;
+    padding: 24px 20px;
+  }
+}
+
+
+
+/* Mobile devices */
 @media (max-width: 768px) {
+  .rightPanel {
+    padding: 20px 24px;
+  }
+
+  .formContainer {
+    padding: 20px 16px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .formContainer > * {
+    width: 100%;
+    max-width: 400px;
+  }
+
   .leftPanel {
     min-width: 100%;
     max-width: 100%;
     width: 100%;
-  }
-
-  .rightPanel {
-    padding: 16px 24px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
   }
 
   .mainHeadline {
@@ -684,17 +860,84 @@
     padding: 16px;
   }
 
-  .formContainer {
-    max-width: 100%;
+  .question {
+    font-size: 24px;
+    line-height: 32px;
+    width: 100%;
+    text-align: left;
   }
 
-  .question {
+  .stepIndicator {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .emailInput {
+    height: 52px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .codeInput {
+    width: 52px;
+    height: 52px;
     font-size: 20px;
-    line-height: 28px;
+  }
+
+  .nextButtonEnabled,
+  .nextButtonDisabled {
+    padding: 14px 32px;
+    width: auto;
+    min-width: 120px;
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .backButton {
+    padding: 12px 0;
+    font-size: 16px;
+  }
+
+  /* Mobile navigation improvements */
+  .navigationButtons {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    align-items: stretch;
+  }
+  
+  .backButton {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 0;
+  }
+  
+  .nextButtonEnabled,
+  .nextButtonDisabled {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mobile header responsive improvements */
+  .mobileHeader {
+    padding: 20px 24px;
+  }
+  
+  .rightPanel {
+    justify-content: flex-start;
   }
 }
 
+/* Small mobile devices */
 @media (max-width: 480px) {
+  .rightPanel {
+    padding: 16px 20px;
+  }
+
+  .formContainer {
+    padding: 16px 12px;
+    max-width: 100%;
+  }
+
   .mainHeadline {
     font-size: 24px;
     line-height: 32px;
@@ -708,7 +951,209 @@
     line-height: 18px;
   }
 
-  .rightPanel {
-    padding: 12px 16px;
+  .question {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+
+  .stepIndicator {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .emailInput {
+    height: 48px;
+    padding: 0 12px;
+    padding-right: 48px;
+  }
+
+  .codeInputs {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .codeInput {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  .nextButtonEnabled,
+  .nextButtonDisabled {
+    padding: 12px 24px;
+    height: 48px;
+    font-size: 16px;
+    min-width: 100px;
+  }
+
+  .backButton {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+
+  .verificationHeader {
+    padding: 16px;
+  }
+
+  .verificationContent {
+    padding: 16px;
+  }
+
+  .verificationTitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .verificationSubtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .mobileHeader {
+    padding: 16px 20px;
+    gap: 8px;
+  }
+  
+  .mobileHeader .onlinemedBrand {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  
+  .mobileMoneyBackGuarantee .moneyBackGuaranteeText {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+  .formContainer {
+    padding: 12px 8px;
+    max-width: 100%;
+  }
+
+  .question {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .emailInput {
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .codeInput {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .nextButtonEnabled,
+  .nextButtonDisabled {
+    height: 44px;
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .emailInput,
+  .codeInput {
+    min-height: 44px; /* iOS minimum touch target */
+  }
+
+  .nextButtonEnabled,
+  .nextButtonDisabled,
+  .backButton {
+    min-height: 44px; /* iOS minimum touch target */
+  }
+
+  .changeButton {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+}
+
+/* Additional mobile accessibility improvements */
+@media (max-width: 768px) {
+  /* Ensure proper contrast on mobile */
+  .question,
+  .verificationTitle {
+    color: #000000;
+  }
+  
+  /* Improve button contrast */
+  .nextButtonEnabled {
+    background: #1f2937;
+  }
+  
+  .nextButtonEnabled:hover {
+    background: #111827;
+  }
+  
+  /* Better focus indicators for mobile */
+  .emailInput:focus,
+  .codeInput:focus {
+    border-width: 2px;
+  }
+
+  /* Mobile form improvements */
+  .formContainer {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .formContainer > * {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .question,
+  .subtitle,
+  .stepIndicator,
+  .emailInputContainer,
+  .emailInput {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+/* Mobile OTP improvements */
+@media (max-width: 480px) {
+  .codeInputs {
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .codeInput {
+    flex: 0 0 auto;
+  }
+}
+
+/* Mobile verification improvements */
+@media (max-width: 768px) {
+  .verificationSubtitle {
+    text-align: center;
+  }
+  
+  .emailInfo {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .verificationHeader {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
   }
 }

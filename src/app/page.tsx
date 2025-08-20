@@ -8,6 +8,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import styles from "./verifyemail.module.css";
+import { animations } from "./animations";
 
 export default function VerifyEmail() {
   const [email, setEmail] = useState("");
@@ -164,6 +165,34 @@ export default function VerifyEmail() {
 
         {/* RIGHT PANEL */}
         <div className={styles.rightPanel}>
+          {/* Mobile Header - Shows sidebar content on mobile */}
+          <div className={styles.mobileHeader}>
+            <div className={styles.onlinemedBrand}>OnlineMed</div>
+
+            <div className={styles.mobileMoneyBackGuarantee}>
+              <img
+                src="/icon.png"
+                alt="Money Back Guarantee"
+                className={styles.moneyBackGuaranteeIcon}
+              />
+              <span className={styles.moneyBackGuaranteeText}>
+                Money Back Guarantee
+              </span>
+            </div>
+
+            <h1 className={styles.mobileMainHeadline}>
+              Your <span className={styles.highlightText}>Work</span> Note
+              <br />
+              is Minutes Away
+            </h1>
+
+            <p className={styles.mobileDescription}>
+              Note: Due to capacity we are currently only able to provide a
+              limited number of notes per day. To see if you qualify please fill
+              out the following short survey!
+            </p>
+          </div>
+
           <motion.div
             className={styles.formContainer}
             variants={fadeUp}
@@ -172,7 +201,7 @@ export default function VerifyEmail() {
             exit="exit"
           >
             <LayoutGroup>
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="sync">
                 {view === "otp" ? (
                   <motion.div
                     key="otp"
@@ -186,13 +215,7 @@ export default function VerifyEmail() {
                     <motion.div
                       layoutId="emailHeader"
                       className={styles.verificationHeader}
-                      initial={{ y: -20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.6,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.05,
-                      }}
+                      {...animations.emailHeader}
                     >
                       <div className={styles.emailInfo}>
                         <span className={styles.emailLabel}>Email</span>
@@ -208,13 +231,7 @@ export default function VerifyEmail() {
 
                     <motion.div
                       className={styles.verificationContent}
-                      initial={{ y: 15, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.6,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                        delay: 0.7,
-                      }}
+                      {...animations.verificationContent}
                     >
                       <h2 className={styles.verificationTitle}>
                         Enter verification code
@@ -238,11 +255,7 @@ export default function VerifyEmail() {
                             onChange={(e) => onCodeChange(i, e.target.value)}
                             onKeyDown={(e) => onCodeKeyDown(i, e)}
                             className={styles.codeInput}
-                            initial={
-                              prefersReduced
-                                ? { opacity: 0 }
-                                : { opacity: 0, y: 4, scale: 0.98 }
-                            }
+                            {...animations.otpInput(i, prefersReduced ?? false)}
                             animate={{
                               ...otpKeyframes,
                               transition: {
@@ -291,7 +304,7 @@ export default function VerifyEmail() {
                         value={email}
                         onChange={onEmailChange}
                       />
-                      {isValid(email) && (
+                      {isValid(email) && view !== "verifying" && (
                         <div className={styles.loadingSpinner} />
                       )}
                     </div>
@@ -303,8 +316,7 @@ export default function VerifyEmail() {
                   <motion.button
                     className={styles.backButton}
                     onClick={back}
-                    whileHover={prefersReduced ? {} : { scale: 1.02 }}
-                    whileTap={prefersReduced ? {} : { scale: 0.98 }}
+                    {...animations.buttonHover(prefersReduced ?? false)}
                   >
                     <svg
                       className={styles.backArrow}
@@ -334,8 +346,7 @@ export default function VerifyEmail() {
                         : !isValid(email) || view === "verifying"
                     }
                     onClick={view === "otp" ? undefined : goVerifying}
-                    whileHover={prefersReduced ? {} : { scale: 1.02 }}
-                    whileTap={prefersReduced ? {} : { scale: 0.98 }}
+                    {...animations.buttonHover(prefersReduced ?? false)}
                   >
                     {view === "verifying" ? "Sending…" : "Next"}
                   </motion.button>
